@@ -1,0 +1,5 @@
+GIT_URI="git://github.com/nowrep/QupZilla.git"
+GIT_TAG="v${PV}"
+inherit git qt4-qmake
+
+HOMEPAGE="http://www.qupzilla.com/"
