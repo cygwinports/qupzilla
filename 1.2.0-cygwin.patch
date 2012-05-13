@@ -1,0 +1,34 @@
+--- origsrc/qupzilla/src/main/main.pro	2012-05-13 15:44:37.000000000 -0500
++++ src/qupzilla/src/main/main.pro	2012-05-13 15:52:05.916233000 -0500
+@@ -6,8 +6,8 @@ mac: TARGET = QupZilla
+ 
+ TEMPLATE = app
+ 
+-!unix|mac: LIBS += -L../../bin -lQupZilla
+-!mac:unix: LIBS += ../../bin/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L../../bin -lQupZilla
++!cygwin-*:!mac:unix: LIBS += ../../bin/libQupZilla.so
+ 
+ include(../defines.pri)
+ include(../install.pri)
+--- origsrc/qupzilla/src/plugins.pri	2012-05-13 15:44:37.000000000 -0500
++++ src/qupzilla/src/plugins.pri	2012-05-13 15:54:55.926957000 -0500
+@@ -27,15 +27,15 @@ INCLUDEPATH += $$PWD/lib/3rdparty\
+ TEMPLATE = lib
+ CONFIG += plugin
+ QT *= webkit network
+-DESTDIR = $$PWD/../bin/plugins/
++DESTDIR = ../../../bin/plugins/
+ 
+ OBJECTS_DIR = build
+ MOC_DIR = build
+ RCC_DIR = build
+ UI_DIR = build
+ 
+-!unix|mac: LIBS += -L$$PWD/../bin -lQupZilla
+-!mac:unix: LIBS += $$PWD/../bin/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L../../../bin -lQupZilla
++!cygwin-*:!mac:unix: LIBS += ../../../bin/libQupZilla.so
+ 
+ !mac:unix {
+     target.path = $$library_folder/qupzilla

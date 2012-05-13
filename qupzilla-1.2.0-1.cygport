@@ -1,0 +1,7 @@
+GIT_URI="git://github.com/QupZilla/${PN}.git"
+GIT_TAG="v${PV}"
+inherit git qt4-qmake
+
+HOMEPAGE="http://www.qupzilla.com/"
+
+PATCH_URI="1.2.0-cygwin.patch"
