@@ -1,0 +1,45 @@
+--- origsrc/qupzilla/src/main/main.cpp	2013-06-23 11:52:05.000000000 -0500
++++ src/qupzilla/src/main/main.cpp	2013-06-23 12:10:44.333910000 -0500
+@@ -18,6 +18,7 @@
+ #include "mainapplication.h"
+ #include "proxystyle.h"
+ 
++#include <stdio.h>     // For fprintf
+ #include <QMessageBox> // For QT_REQUIRE_VERSION
+ 
+ #ifdef Q_OS_LINUX
+--- origsrc/qupzilla/src/main/main.pro	2013-06-23 11:52:05.000000000 -0500
++++ src/qupzilla/src/main/main.pro	2013-06-23 11:56:18.000000000 -0500
+@@ -9,8 +9,8 @@ mac: TARGET = QupZilla
+ 
+ TEMPLATE = app
+ 
+-!unix|mac: LIBS += -L../../bin -lQupZilla
+-!mac:unix: LIBS += ../../bin/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L../../bin -lQupZilla
++!cygwin-*:!mac:unix: LIBS += ../../bin/libQupZilla.so
+ 
+ include(../defines.pri)
+ include(../install.pri)
+--- origsrc/qupzilla/src/plugins.pri	2013-06-23 11:52:05.000000000 -0500
++++ src/qupzilla/src/plugins.pri	2013-06-23 11:56:18.000000000 -0500
+@@ -27,7 +27,7 @@ INCLUDEPATH += $$PWD/lib/3rdparty\
+ 
+ TEMPLATE = lib
+ CONFIG += plugin
+-DESTDIR = $$PWD/../bin/plugins/
++DESTDIR = ../../../bin/plugins/
+ 
+ isEqual(QT_MAJOR_VERSION, 5) {
+     QT *= webkitwidgets network
+@@ -40,8 +40,8 @@ MOC_DIR = build
+ RCC_DIR = build
+ UI_DIR = build
+ 
+-!unix|mac: LIBS += -L$$PWD/../bin -lQupZilla
+-!mac:unix: LIBS += $$PWD/../bin/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L../../../bin -lQupZilla
++!cygwin-*:!mac:unix: LIBS += ../../../bin/libQupZilla.so
+ 
+ !mac:unix {
+     target.path = $$library_folder/qupzilla

@@ -1,7 +1,10 @@
-GIT_URI="git://github.com/QupZilla/${PN}.git"
+GIT_URI="git://github.com/QupZilla/qupzilla.git"
 GIT_TAG="v${PV}"
 inherit git qt4-qmake
 
+NAME="qupzilla"
+VERSION=1.4.3
+RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
 DESCRIPTION="QupZilla is a new and very fast QtWebKit browser. It aims
@@ -10,5 +13,4 @@ This project has been originally started only for educational purposes.
 But from its start, QupZilla has grown into a feature-rich browser."
 HOMEPAGE="http://www.qupzilla.com/"
 
-PATCH_URI="1.2.0-cygwin.patch
-           1.3.1-backtrace.patch"
+PATCH_URI="1.4.3-cygwin.patch"
