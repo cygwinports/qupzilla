@@ -1,9 +1,7 @@
-GIT_URI="git://github.com/QupZilla/qupzilla.git"
-GIT_TAG="v${PV}"
-inherit git qt4-qmake
+inherit qt4-qmake
 
 NAME="qupzilla"
-VERSION=1.4.3
+VERSION=1.6.6
 RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
@@ -12,5 +10,9 @@ to be a lightweight web browser available through all major platforms.
 This project has been originally started only for educational purposes.
 But from its start, QupZilla has grown into a feature-rich browser."
 HOMEPAGE="http://www.qupzilla.com/"
+SRC_URI="https://github.com/QupZilla/qupzilla/archive/v${VERSION}/${NAME}-v${VERSION}.tar.gz"
 
 PATCH_URI="1.4.3-cygwin.patch"
+
+qupzilla_CONTENTS="etc/ usr/bin/ usr/lib/qupzilla/ usr/share/"
+PKG_IGNORE="usr/lib/libQupZilla.dll.a"
