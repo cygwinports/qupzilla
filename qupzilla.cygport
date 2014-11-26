@@ -1,7 +1,7 @@
 inherit qt4-qmake
 
 NAME="qupzilla"
-VERSION=1.6.6
+VERSION=1.8.4
 RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
@@ -11,8 +11,7 @@ This project has been originally started only for educational purposes.
 But from its start, QupZilla has grown into a feature-rich browser."
 HOMEPAGE="http://www.qupzilla.com/"
 SRC_URI="https://github.com/QupZilla/qupzilla/archive/v${VERSION}/${NAME}-v${VERSION}.tar.gz"
-
-PATCH_URI="1.4.3-cygwin.patch"
+PATCH_URI="1.8.4-cygwin.patch"
 
 qupzilla_CONTENTS="etc/ usr/bin/ usr/lib/qupzilla/ usr/share/"
 PKG_IGNORE="usr/lib/libQupZilla.dll.a"

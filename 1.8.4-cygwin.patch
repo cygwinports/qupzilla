@@ -1,0 +1,26 @@
+--- origsrc/qupzilla-1.8.4/src/main/main.pro	2014-11-03 14:21:24.000000000 -0600
++++ src/qupzilla-1.8.4/src/main/main.pro	2014-11-25 20:13:30.420942500 -0600
+@@ -15,8 +15,8 @@ compile_libtool {
+ LIBS += $$QZ_DESTDIR/libQupZilla.la
+ }
+ else {
+-!unix|mac: LIBS += -L$$QZ_DESTDIR -lQupZilla
+-!mac:unix: LIBS += $$QZ_DESTDIR/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L$$QZ_DESTDIR -lQupZilla
++!cygwin-*:!mac:unix: LIBS += $$QZ_DESTDIR/libQupZilla.so
+ }
+ 
+ unix:!contains(DEFINES, "DISABLE_DBUS") QT += dbus
+--- origsrc/qupzilla-1.8.4/src/plugins.pri	2014-11-03 14:21:24.000000000 -0600
++++ src/qupzilla-1.8.4/src/plugins.pri	2014-11-25 20:14:28.462812800 -0600
+@@ -44,8 +44,8 @@ MOC_DIR = build
+ RCC_DIR = build
+ UI_DIR = build
+ 
+-!unix|mac: LIBS += -L$$QZ_DESTDIR -lQupZilla
+-!mac:unix: LIBS += $$QZ_DESTDIR/libQupZilla.so
++!unix|cygwin-*|mac: LIBS += -L$$QZ_DESTDIR -lQupZilla
++!cygwin-*:!mac:unix: LIBS += $$QZ_DESTDIR/libQupZilla.so
+ 
+ !mac:unix {
+     target.path = $$library_folder/qupzilla
