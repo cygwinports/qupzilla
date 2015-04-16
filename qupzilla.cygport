@@ -1,7 +1,7 @@
-inherit qt4-qmake
+inherit qt5-qmake
 
 NAME="qupzilla"
-VERSION=1.8.4
+VERSION=1.8.6
 RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
