@@ -2,7 +2,7 @@ inherit qt5-qmake
 
 NAME="qupzilla"
 VERSION=1.8.6
-RELEASE=1
+RELEASE=2
 CATEGORY="Web"
 SUMMARY="Qt web browser"
 DESCRIPTION="QupZilla is a new and very fast QtWebKit browser. It aims
@@ -15,3 +15,11 @@ PATCH_URI="1.8.4-cygwin.patch"
 
 qupzilla_CONTENTS="etc/ usr/bin/ usr/lib/qupzilla/ usr/share/"
 PKG_IGNORE="usr/lib/libQupZilla.dll.a"
+
+DIFF_EXCLUDES="moc_*.cpp qrc_*.cpp ui_*.h *.moc *.dll.a"
+
+src_compile() {
+	cd ${B}
+	cygqmake5 ${S}/QupZilla.pro
+	cygmake
+}
