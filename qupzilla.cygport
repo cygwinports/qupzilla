@@ -1,8 +1,8 @@
 inherit qt5-qmake
 
 NAME="qupzilla"
-VERSION=1.8.6
-RELEASE=2
+VERSION=1.8.7
+RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
 DESCRIPTION="QupZilla is a new and very fast QtWebKit browser. It aims
@@ -11,7 +11,10 @@ This project has been originally started only for educational purposes.
 But from its start, QupZilla has grown into a feature-rich browser."
 HOMEPAGE="http://www.qupzilla.com/"
 SRC_URI="https://github.com/QupZilla/qupzilla/archive/v${VERSION}/${NAME}-v${VERSION}.tar.gz"
-PATCH_URI="1.8.4-cygwin.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/qupzilla.git/plain/QupZilla-1.8.7-qtwebkit_version_check.patch
+	1.8.4-cygwin.patch
+"
 
 qupzilla_CONTENTS="etc/ usr/bin/ usr/lib/qupzilla/ usr/share/"
 PKG_IGNORE="usr/lib/libQupZilla.dll.a"
