@@ -1,7 +1,7 @@
 inherit qt5-qmake
 
 NAME="qupzilla"
-VERSION=1.8.7
+VERSION=1.8.9
 RELEASE=1
 CATEGORY="Web"
 SUMMARY="Qt web browser"
@@ -12,17 +12,36 @@ But from its start, QupZilla has grown into a feature-rich browser."
 HOMEPAGE="http://www.qupzilla.com/"
 SRC_URI="https://github.com/QupZilla/qupzilla/archive/v${VERSION}/${NAME}-v${VERSION}.tar.gz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/qupzilla.git/plain/QupZilla-1.8.7-qtwebkit_version_check.patch
 	1.8.4-cygwin.patch
 "
 
-qupzilla_CONTENTS="etc/ usr/bin/ usr/lib/qupzilla/ usr/share/"
+PKG_NAMES="${NAME} ${NAME}-gnome-keyring ${NAME}-kwallet"
+qupzilla_CONTENTS="
+	--exclude=*Passwords.dll
+	etc/
+	usr/bin/
+	usr/lib/qupzilla/
+	usr/share/appdata/
+	usr/share/applications/
+	usr/share/bash-completion/
+	usr/share/doc/
+	usr/share/icons/hicolor/
+	usr/share/pixmaps/
+	usr/share/${NAME}/
+"
+qupzilla_gnome_keyring_SUMMARY="GNOME Keyring password caching support for Qupzilla"
+qupzilla_gnome_keyring_CONTENTS="usr/lib/qupzilla/cygGnomeKeyringPasswords.dll"
+qupzilla_kwallet_SUMMARY="KWallet password caching support for Qupzilla"
+qupzilla_kwallet_CONTENTS="usr/lib/qupzilla/cygKWalletPasswords.dll"
 PKG_IGNORE="usr/lib/libQupZilla.dll.a"
 
-DIFF_EXCLUDES="moc_*.cpp qrc_*.cpp ui_*.h *.moc *.dll.a"
+DIFF_EXCLUDES="moc_*.cpp moc_*.h qrc_*.cpp ui_*.h *.moc *.dll.a"
 
 src_compile() {
 	cd ${B}
+	export DISABLE_UPDATES_CHECK="true"
+	export GNOME_INTEGRATION="true"
+	export KDE_INTEGRATION="true"
 	cygqmake5 ${S}/QupZilla.pro
 	cygmake
 }
