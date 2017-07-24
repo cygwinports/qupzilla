@@ -2,7 +2,7 @@ inherit qt5-qmake
 
 NAME="qupzilla"
 VERSION=1.8.9
-RELEASE=1
+RELEASE=2
 CATEGORY="Web"
 SUMMARY="Qt web browser"
 DESCRIPTION="QupZilla is a new and very fast QtWebKit browser. It aims
